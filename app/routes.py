@@ -100,5 +100,9 @@ def do_qa():
         userid = request_data['user_id']
         _text = Text.query.filter_by(id=current_text,user_id=userid).first()
         answer = get_answer(_text.content,question)
-        print (answer)
-        return answer
+        print ("Hello Everyone")
+        print (answer['score'])
+        if (answer['score'] < 0.01):
+            return "Could'nt find the answer. Please Try again."
+        else:
+            return answer['answer']
